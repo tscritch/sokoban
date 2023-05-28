@@ -17,6 +17,8 @@ fn main() {
 
     while !rl.window_should_close() {
         let wp = rl.get_window_position();
+
+        // --- BEGIN DRAW ---
         let mut d = rl.begin_drawing(&thread);
 
         d.clear_background(Color::WHITE);
@@ -30,12 +32,26 @@ fn main() {
             Color::BLACK,
         );
 
-        d.draw_texture_ex(
-            &sprite_sheet,
-            Vector2 { x: 100.0, y: 100.0 },
-            0.0,
-            3.0,
-            Color::WHITE,
-        );
+        // d.draw_texture_ex(
+        //     &sprite_sheet,
+        //     Vector2 { x: 100.0, y: 100.0 },
+        //     0.0,
+        //     3.0,
+        //     Color::WHITE,
+        // );
+
+
+
+        // --- END DRAW ---
     }
+
 }
+
+// draws 8x8 sprites from an index on the sheet
+fn draw_sprite(draw: &mut RaylibDrawHandle, sheet: &Texture2D, index: u8, position: &Vector2) {
+    let crop_rect: Rectangle = Rectangle { x: (), y: (), width: (), height: () }
+    draw.draw_texture_rec(&sheet, source_rec, position, Color::WHITE)
+}
+
+// sprites 8x8
+fn get_rect_from_index()
