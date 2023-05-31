@@ -1,8 +1,10 @@
 use raylib::prelude::*;
 
+mod tiles;
+
 fn main() {
     let (mut rl, thread) = raylib::init().size(640, 480).title("sokoban").build();
-    rl.set_window_position(1200, 120);
+    rl.set_window_position(800, 120);
 
     let font = rl
         .load_font(&thread, "resources/fonts/alpha_beta.png")
@@ -32,26 +34,13 @@ fn main() {
             Color::BLACK,
         );
 
-        // d.draw_texture_ex(
-        //     &sprite_sheet,
-        //     Vector2 { x: 100.0, y: 100.0 },
-        //     0.0,
-        //     3.0,
-        //     Color::WHITE,
-        // );
-
-
+        tiles::draw_sprite(&mut d, &sprite_sheet, 1, &position);
+        tiles::draw_sprite(&mut d, &sprite_sheet, 2, &Vector2 { x: 20.0, y: 12.0 });
+        tiles::draw_sprite(&mut d, &sprite_sheet, 3, &Vector2 { x: 28.0, y: 12.0 });
+        tiles::draw_sprite(&mut d, &sprite_sheet, 4, &Vector2 { x: 36.0, y: 12.0 });
+        tiles::draw_sprite(&mut d, &sprite_sheet, 5, &Vector2 { x: 42.0, y: 12.0 });
+        tiles::draw_sprite(&mut d, &sprite_sheet, 6, &Vector2 { x: 50.0, y: 12.0 });
 
         // --- END DRAW ---
     }
-
 }
-
-// draws 8x8 sprites from an index on the sheet
-fn draw_sprite(draw: &mut RaylibDrawHandle, sheet: &Texture2D, index: u8, position: &Vector2) {
-    let crop_rect: Rectangle = Rectangle { x: (), y: (), width: (), height: () }
-    draw.draw_texture_rec(&sheet, source_rec, position, Color::WHITE)
-}
-
-// sprites 8x8
-fn get_rect_from_index()
